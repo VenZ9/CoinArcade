@@ -1,0 +1,921 @@
+[
+  {
+    "id": "coin-flip",
+    "name": "Coin Flip",
+    "category": "chance",
+    "tagline": "Call it in the air — heads or tails?",
+    "description": "A single cryptographically fair coin toss. Call the landing side correctly to collect a 1.96x payout.",
+    "icon": "🪙",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "heads", "name": "Heads", "weight": 50, "rewardMultiplier": 1.96 },
+        { "id": "tails", "name": "Tails", "weight": 50, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Call Heads or Tails before the toss.",
+      "The coin is flipped using Web Crypto entropy — an unbiased 50/50 chance.",
+      "A correct call returns 1.96x your wager; a wrong call returns nothing."
+    ],
+    "winCondition": "The coin lands on the side you called.",
+    "loseCondition": "The coin lands on the opposite side."
+  },
+  {
+    "id": "dice-roll",
+    "name": "Dice Roll",
+    "category": "chance",
+    "tagline": "Over, under, or call the exact face.",
+    "description": "Roll a fair six-sided die and predict whether it lands under 4, over 3, or on an exact face.",
+    "icon": "🎲",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "over", "name": "Over 3 — Win", "weight": 50, "rewardMultiplier": 1.96 },
+        { "id": "under", "name": "Under 4 — Loss", "weight": 50, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Choose Under (1–3), Over (4–6) or Exact (a single face).",
+      "Under and Over are even-money style calls paying 1.96x; Exact pays 5.88x.",
+      "Every face has an identical 1-in-6 probability on each independent roll."
+    ],
+    "winCondition": "The rolled face matches your prediction.",
+    "loseCondition": "The rolled face falls outside your prediction."
+  },
+  {
+    "id": "lucky-wheel",
+    "name": "Lucky Wheel",
+    "category": "chance",
+    "tagline": "Spin for multipliers up to 5x.",
+    "description": "Eight coloured segments with published weights. The landing segment decides your multiplier.",
+    "icon": "🎡",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "seg0", "name": "0x", "weight": 14, "rewardMultiplier": 0 },
+        { "id": "seg05", "name": "0.5x", "weight": 25, "rewardMultiplier": 0.5 },
+        { "id": "seg12", "name": "1.2x", "weight": 18, "rewardMultiplier": 1.2 },
+        { "id": "seg15", "name": "1.5x", "weight": 12, "rewardMultiplier": 1.5 },
+        { "id": "seg20", "name": "2x", "weight": 11, "rewardMultiplier": 2.0 },
+        { "id": "seg30", "name": "3x", "weight": 4, "rewardMultiplier": 3.0 },
+        { "id": "seg50", "name": "5x", "weight": 2, "rewardMultiplier": 5.0 },
+        { "id": "seg0b", "name": "0x", "weight": 14, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Spin the wheel once per round; every segment has a published weight.",
+      "The selected segment is decided before the animation begins.",
+      "Payouts range from 0x to 5x of your wager."
+    ],
+    "winCondition": "The wheel lands on a segment worth more than 1x.",
+    "loseCondition": "The wheel lands on a 0x segment, or a segment worth less than your wager."
+  },
+  {
+    "id": "slots",
+    "name": "Classic Slots",
+    "category": "chance",
+    "tagline": "Three reels, six published paylines.",
+    "description": "A three-reel slot machine with a fully published paytable, from 777 jackpot down to no match.",
+    "icon": "🎰",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "seven", "name": "Jackpot 777", "weight": 1, "rewardMultiplier": 25.0 },
+        { "id": "diamond", "name": "Diamond Line", "weight": 2, "rewardMultiplier": 10.0 },
+        { "id": "bell", "name": "Triple Bell", "weight": 4, "rewardMultiplier": 5.0 },
+        { "id": "cherry3", "name": "Cherry Trio", "weight": 6, "rewardMultiplier": 3.0 },
+        { "id": "cherry2", "name": "Cherry Pair", "weight": 10, "rewardMultiplier": 1.5 },
+        { "id": "miss", "name": "No Match", "weight": 77, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Pull once per round; the payline combination is drawn from the published table.",
+      "The jackpot triple-7 line pays 25x; a cherry pair still returns 1.5x.",
+      "No-match spins return nothing."
+    ],
+    "winCondition": "The drawn payline returns more than your wager.",
+    "loseCondition": "The drawn payline is \"No Match\"."
+  },
+  {
+    "id": "plinko",
+    "name": "Plinko Drop",
+    "category": "chance",
+    "tagline": "Drop a ball through the peg pyramid.",
+    "description": "A ball bounces down six rows of pegs into one of seven buckets with published weights and payouts.",
+    "icon": "🔻",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "slot_0", "name": "8.5x bucket", "weight": 1, "rewardMultiplier": 8.5 },
+        { "id": "slot_1", "name": "2x bucket", "weight": 6, "rewardMultiplier": 2.0 },
+        { "id": "slot_2", "name": "0.5x bucket", "weight": 15, "rewardMultiplier": 0.5 },
+        { "id": "slot_3", "name": "0.35x bucket", "weight": 20, "rewardMultiplier": 0.35 },
+        { "id": "slot_4", "name": "0.5x bucket", "weight": 15, "rewardMultiplier": 0.5 },
+        { "id": "slot_5", "name": "2x bucket", "weight": 6, "rewardMultiplier": 2.0 },
+        { "id": "slot_6", "name": "8.5x bucket", "weight": 1, "rewardMultiplier": 8.5 }
+      ]
+    },
+    "rulesText": [
+      "Drop one ball per round; the destination bucket is chosen from the published weight table.",
+      "Edge buckets pay 8.5x but are the least likely; the centre bucket is the most common.",
+      "The landing bucket is selected before the bounce animation plays."
+    ],
+    "winCondition": "The ball lands in a bucket paying more than 1x.",
+    "loseCondition": "The ball lands in a bucket paying less than 1x."
+  },
+  {
+    "id": "high-card",
+    "name": "High Card Duel",
+    "category": "chance",
+    "tagline": "One card each — highest wins.",
+    "description": "Draw a single card against the dealer from a freshly shuffled 52-card deck. Higher rank wins.",
+    "icon": "🃏",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.9528,
+    "ruleModel": {
+      "type": "deck",
+      "deckCount": 1,
+      "drawRules": { "deckCount": 1, "shuffleFrequency": "per-round", "dealerStandOn": 0, "tieRule": "push" }
+    },
+    "rulesText": [
+      "Both you and the dealer draw one card from a full 52-card deck shuffled per round.",
+      "The higher ranked card wins and pays 2x; Ace is high.",
+      "Equal ranks are a push and return your wager."
+    ],
+    "winCondition": "Your card outranks the dealer's card.",
+    "loseCondition": "The dealer's card outranks yours.",
+    "tieCondition": "Equal ranks push — your wager is returned in full."
+  },
+  {
+    "id": "roulette-wheel",
+    "name": "Roulette Lite",
+    "category": "chance",
+    "tagline": "Back a colour on a 38-pocket wheel.",
+    "description": "A simplified single-zero style wheel: back a winning pocket at a 2.00x colour payout.",
+    "icon": "🎯",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "win", "name": "Colour Hit", "weight": 18, "rewardMultiplier": 2.0 },
+        { "id": "lose", "name": "House Pocket", "weight": 20, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Back a colour before the wheel settles.",
+      "18 of the 38 pockets pay your colour at 2.00x; the remaining 20 pockets return nothing.",
+      "Every spin is independent of all previous spins."
+    ],
+    "winCondition": "The ball settles in a pocket matching your colour.",
+    "loseCondition": "The ball settles in a pocket belonging to the house."
+  },
+  {
+    "id": "keno-lite",
+    "name": "Keno Lite",
+    "category": "chance",
+    "tagline": "Pick a number, watch the draw.",
+    "description": "Choose one number from 1 to 10. If the single drawn ball matches, you collect 9.5x.",
+    "icon": "🔢",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "hit", "name": "Number Drawn", "weight": 1, "rewardMultiplier": 9.5 },
+        { "id": "miss", "name": "Not Drawn", "weight": 9, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Select one number from 1 to 10 before the draw.",
+      "One ball is drawn uniformly from the pool of ten numbers.",
+      "A match pays 9.5x your wager."
+    ],
+    "winCondition": "The drawn ball matches your chosen number.",
+    "loseCondition": "The drawn ball is a different number."
+  },
+  {
+    "id": "bingo-ball",
+    "name": "Bingo Ball",
+    "category": "chance",
+    "tagline": "One ball, four marks, 3.8x.",
+    "description": "Mark one of four squares. The single drawn ball determines whether your square is called.",
+    "icon": "🎱",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "called", "name": "Square Called", "weight": 25, "rewardMultiplier": 3.8 },
+        { "id": "silent", "name": "Square Silent", "weight": 75, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Mark one of four squares on the card before the draw.",
+      "Exactly one of the four squares is called, with equal probability.",
+      "A called square pays 3.8x your wager."
+    ],
+    "winCondition": "Your marked square is the one called.",
+    "loseCondition": "A different square is called."
+  },
+  {
+    "id": "colour-bet",
+    "name": "Colour Bet",
+    "category": "chance",
+    "tagline": "Four colours, one winner.",
+    "description": "Back one of four colours before the draw. A match returns 3.8x your wager.",
+    "icon": "🎨",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "match", "name": "Colour Matched", "weight": 25, "rewardMultiplier": 3.8 },
+        { "id": "miss", "name": "Colour Missed", "weight": 75, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Choose one of four colours before the reveal.",
+      "Each colour has an identical 25% chance of being drawn.",
+      "A correct call pays 3.8x; an incorrect call pays nothing."
+    ],
+    "winCondition": "The revealed colour matches your choice.",
+    "loseCondition": "A different colour is revealed."
+  },
+  {
+    "id": "number-guess",
+    "name": "Number Guess",
+    "category": "chance",
+    "tagline": "One in twenty pays nineteen to one.",
+    "description": "Guess a single number between 1 and 20. A hit returns 19x your wager.",
+    "icon": "🔮",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "hit", "name": "Exact Hit", "weight": 5, "rewardMultiplier": 19.0 },
+        { "id": "miss", "name": "Miss", "weight": 95, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Pick one number from 1 to 20 before the reveal.",
+      "One number is drawn uniformly from the same range.",
+      "An exact hit pays 19x your wager."
+    ],
+    "winCondition": "The drawn number equals your guess.",
+    "loseCondition": "The drawn number differs from your guess."
+  },
+  {
+    "id": "marble-draw",
+    "name": "Marble Draw",
+    "category": "chance",
+    "tagline": "Three red marbles in the bag.",
+    "description": "Draw one marble from a bag of three red and seven blue. Backing red pays 3.17x.",
+    "icon": "🔴",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "red", "name": "Red Marble", "weight": 3, "rewardMultiplier": 3.17 },
+        { "id": "blue", "name": "Blue Marble", "weight": 7, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "The bag holds ten marbles: three red and seven blue.",
+      "One marble is drawn blind and replaced after every round.",
+      "Backing red pays 3.17x; backing blue pays nothing."
+    ],
+    "winCondition": "The drawn marble matches the colour you backed.",
+    "loseCondition": "The drawn marble is the other colour."
+  },
+  {
+    "id": "coin-trio",
+    "name": "Coin Trio",
+    "category": "chance",
+    "tagline": "Call all three coins at once.",
+    "description": "Three independent coin tosses. Call the exact three-coin pattern to win 7.6x.",
+    "icon": "🪙",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "exact", "name": "Pattern Matched", "weight": 1, "rewardMultiplier": 7.6 },
+        { "id": "miss", "name": "Pattern Missed", "weight": 7, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Predict the exact sequence of three independent coin tosses.",
+      "Each of the eight possible sequences has an identical 12.5% probability.",
+      "A perfect call pays 7.6x your wager."
+    ],
+    "winCondition": "All three tosses match your predicted sequence.",
+    "loseCondition": "At least one toss differs from your predicted sequence."
+  },
+  {
+    "id": "wheel-fortune",
+    "name": "Wheel of Fortune",
+    "category": "chance",
+    "tagline": "Five slices — one pays 4.8x.",
+    "description": "A five-slice fortune wheel. Landing the golden slice returns 4.8x your wager.",
+    "icon": "🎠",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "golden", "name": "Golden Slice", "weight": 20, "rewardMultiplier": 4.8 },
+        { "id": "plain", "name": "Plain Slice", "weight": 80, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "The wheel has five equally sized slices; exactly one is golden.",
+      "The slice is selected with a uniform draw before the spin animation.",
+      "The golden slice pays 4.8x; every plain slice pays nothing."
+    ],
+    "winCondition": "The wheel stops on the golden slice.",
+    "loseCondition": "The wheel stops on any plain slice."
+  },
+  {
+    "id": "dice-duel",
+    "name": "Dice Duel",
+    "category": "chance",
+    "tagline": "Two dice, one threshold.",
+    "description": "Roll two fair dice and back a total above 7. A winning total returns 2.28x.",
+    "icon": "🎲",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "high", "name": "Total Above 7", "weight": 15, "rewardMultiplier": 2.28 },
+        { "id": "low", "name": "Total 7 Or Below", "weight": 21, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Two fair six-sided dice are rolled; you back a combined total above 7.",
+      "15 of the 36 equally likely outcomes exceed 7; the other 21 do not.",
+      "A winning total pays 2.28x your wager."
+    ],
+    "winCondition": "The combined dice total is 8 or higher.",
+    "loseCondition": "The combined dice total is 7 or lower."
+  },
+  {
+    "id": "mines",
+    "name": "Mines",
+    "category": "risk",
+    "tagline": "Reveal gems, dodge the mines, cash out.",
+    "description": "A 5x5 grid hides three mines. Reveal gems to grow your multiplier, then cash out before you detonate.",
+    "icon": "💣",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.98,
+    "ruleModel": {
+      "type": "board",
+      "boardRules": { "rows": 5, "cols": 5, "trapCount": 3, "treasureCount": 0 }
+    },
+    "rulesText": [
+      "Three of the twenty-five tiles hide mines; the mine layout is fixed when the round starts.",
+      "Each safe reveal multiplies your cash-out value by 25/22 (a 0.98 edge).",
+      "Cash out at any time — hitting a mine forfeits the round."
+    ],
+    "winCondition": "You cash out after revealing at least one gem.",
+    "loseCondition": "You reveal a mine and forfeit the wager."
+  },
+  {
+    "id": "crash",
+    "name": "Crash",
+    "category": "risk",
+    "tagline": "Lock in before the curve breaks.",
+    "description": "A rising multiplier that can break at any moment. Lock in early for a small gain, or push your luck.",
+    "icon": "🚀",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "secure", "name": "Secured at 1.2x", "weight": 80, "rewardMultiplier": 1.2 },
+        { "id": "bust", "name": "Crashed", "weight": 20, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "The multiplier rises from 1.00x and breaks at a predetermined point chosen before the round.",
+      "Locking in before the break pays your locked multiplier; otherwise the round is a bust.",
+      "The break point is fixed in advance and cannot be influenced by your balance or history."
+    ],
+    "winCondition": "You lock in at a multiplier above 1x before the crash point.",
+    "loseCondition": "The curve breaks before you lock in."
+  },
+  {
+    "id": "tower-climb",
+    "name": "Tower Climb",
+    "category": "risk",
+    "tagline": "One safe step per floor.",
+    "description": "Each floor has a safe step and a collapsing step. Climb once for a 1.9x payout.",
+    "icon": "🗼",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "safe", "name": "Safe Step", "weight": 50, "rewardMultiplier": 1.9 },
+        { "id": "collapse", "name": "Collapse", "weight": 50, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Each floor presents two steps; exactly one holds your weight.",
+      "A safe step pays 1.9x; a collapsing step ends the climb with nothing.",
+      "Step placement is decided independently on every floor."
+    ],
+    "winCondition": "Your chosen step holds and you bank the 1.9x return.",
+    "loseCondition": "The step collapses beneath you."
+  },
+  {
+    "id": "double-or-nothing",
+    "name": "Double or Nothing",
+    "category": "risk",
+    "tagline": "One decision, two outcomes.",
+    "description": "A closed-form 49% double: win and your wager is doubled, lose and it is gone.",
+    "icon": "⚖️",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "deterministic",
+      "formulaDescription": "reward = 2.00 x wager with probability 0.49, otherwise 0",
+      "parameters": { "winProbability": 0.49, "payoutMultiplier": 2.0 }
+    },
+    "rulesText": [
+      "The round resolves on a single uniform draw against a fixed 0.49 win threshold.",
+      "A win doubles your wager; a loss returns nothing.",
+      "The threshold is constant and never adjusted for stake size or prior results."
+    ],
+    "winCondition": "The draw falls below the 0.49 win threshold.",
+    "loseCondition": "The draw falls at or above the 0.49 win threshold."
+  },
+  {
+    "id": "bomb-defuse",
+    "name": "Bomb Defuse",
+    "category": "risk",
+    "tagline": "Cut one wire out of ten.",
+    "description": "Three of ten wires are live. Cutting a safe wire returns 3.2x your wager.",
+    "icon": "🧨",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "safe", "name": "Safe Wire", "weight": 30, "rewardMultiplier": 3.2 },
+        { "id": "live", "name": "Live Wire", "weight": 70, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Ten wires, three of them live. You cut exactly one.",
+      "A safe wire pays 3.2x; a live wire ends the round with nothing.",
+      "The live wire positions are assigned uniformly at random each round."
+    ],
+    "winCondition": "You cut a wire that is not live.",
+    "loseCondition": "You cut a live wire."
+  },
+  {
+    "id": "lava-bridge",
+    "name": "Lava Bridge",
+    "category": "risk",
+    "tagline": "Two planks, one is scorched.",
+    "description": "Choose a plank to cross. The solid plank pays 2.4x; the scorched plank drops you.",
+    "icon": "🌋",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "solid", "name": "Solid Plank", "weight": 40, "rewardMultiplier": 2.4 },
+        { "id": "scorched", "name": "Scorched Plank", "weight": 60, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Five planks span the lava; two are solid and three are scorched.",
+      "You step on exactly one plank per crossing.",
+      "A solid plank pays 2.4x your wager; a scorched plank pays nothing."
+    ],
+    "winCondition": "You step on a solid plank.",
+    "loseCondition": "You step on a scorched plank."
+  },
+  {
+    "id": "tightrope",
+    "name": "Tightrope",
+    "category": "risk",
+    "tagline": "Safer odds, smaller return.",
+    "description": "A 60% crossing that returns 1.6x. A lower-variance risk game for steady play.",
+    "icon": "🎪",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "crossed", "name": "Crossed Safely", "weight": 60, "rewardMultiplier": 1.6 },
+        { "id": "fell", "name": "Fell", "weight": 40, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Five of every ten crossings succeed across the long run.",
+      "A safe crossing pays 1.6x your wager; a fall pays nothing.",
+      "Every attempt is resolved independently."
+    ],
+    "winCondition": "You complete the crossing.",
+    "loseCondition": "You lose balance and fall."
+  },
+  {
+    "id": "mystery-box",
+    "name": "Mystery Box",
+    "category": "rewards",
+    "tagline": "Four loot tiers inside every box.",
+    "description": "Pick a box and unbox one of four published loot tiers, from Common at 0.5x to Legendary at 4x.",
+    "icon": "📦",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "common", "name": "Common Loot", "weight": 60, "rewardMultiplier": 0.5 },
+        { "id": "rare", "name": "Rare Loot", "weight": 28, "rewardMultiplier": 1.25 },
+        { "id": "epic", "name": "Epic Loot", "weight": 9, "rewardMultiplier": 2.0 },
+        { "id": "legendary", "name": "Legendary Loot", "weight": 3, "rewardMultiplier": 4.0 }
+      ]
+    },
+    "rulesText": [
+      "Choose one of three identical boxes; the loot tier was fixed before you picked.",
+      "Four published tiers: Common 0.5x, Rare 1.25x, Epic 2x, Legendary 4x.",
+      "Reward-game wins also have a chance to drop a collectible into your inventory."
+    ],
+    "winCondition": "The unboxed tier returns more than your wager (Rare or better).",
+    "loseCondition": "The unboxed tier returns less than your wager (Common)."
+  },
+  {
+    "id": "treasure-chest",
+    "name": "Treasure Chest",
+    "category": "rewards",
+    "tagline": "Six chests, one is rigged.",
+    "description": "A six-chest board with one trapped chest. Opening a safe chest returns a guaranteed multiple.",
+    "icon": "🧰",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.98,
+    "ruleModel": {
+      "type": "board",
+      "boardRules": { "rows": 2, "cols": 3, "trapCount": 1, "treasureCount": 2 }
+    },
+    "rulesText": [
+      "Six chests are laid out; exactly one is trapped. The layout is locked before you choose.",
+      "Opening a safe chest pays 1.176x your wager (a 0.98 expected return over the board).",
+      "Only one chest may be opened per round."
+    ],
+    "winCondition": "You open a chest that is not trapped.",
+    "loseCondition": "You open the trapped chest."
+  },
+  {
+    "id": "scratch-card",
+    "name": "Scratch Card",
+    "category": "rewards",
+    "tagline": "Reveal three symbols, hit 3.8x.",
+    "description": "Scratch a card to reveal its panel. One panel in four is a winning card paying 3.8x.",
+    "icon": "🎫",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "winner", "name": "Winning Card", "weight": 25, "rewardMultiplier": 3.8 },
+        { "id": "blank", "name": "Blank Card", "weight": 75, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "One in four cards is a winner; the card type is assigned before you scratch.",
+      "A winning card pays 3.8x your wager.",
+      "Every card is independent of all previously scratched cards."
+    ],
+    "winCondition": "You scratch a winning card.",
+    "loseCondition": "You scratch a blank card."
+  },
+  {
+    "id": "daily-spin",
+    "name": "Reward Spin",
+    "category": "rewards",
+    "tagline": "A bonus wheel with softer odds.",
+    "description": "A bonus-flavoured wheel with a 35% hit rate returning 2.7x your wager.",
+    "icon": "🎟️",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "bonus", "name": "Bonus Hit", "weight": 35, "rewardMultiplier": 2.7 },
+        { "id": "empty", "name": "Empty Slot", "weight": 65, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "35% of spins land on a bonus slot paying 2.7x.",
+      "The remaining 65% land on an empty slot and return nothing.",
+      "Slot selection is uniformly random and independent per spin."
+    ],
+    "winCondition": "The wheel stops on a bonus slot.",
+    "loseCondition": "The wheel stops on an empty slot."
+  },
+  {
+    "id": "loot-goblin",
+    "name": "Loot Goblin",
+    "category": "rewards",
+    "tagline": "Rare catch, rich reward.",
+    "description": "Catch the goblin one time in seven for a 6.3x payout. High variance, published odds.",
+    "icon": "👺",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "caught", "name": "Goblin Caught", "weight": 15, "rewardMultiplier": 6.3 },
+        { "id": "escaped", "name": "Goblin Escaped", "weight": 85, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "The goblin is caught on 15% of attempts, paying 6.3x your wager.",
+      "On the other 85% it escapes and the wager is lost.",
+      "Catch probability is fixed and never increases after a string of misses."
+    ],
+    "winCondition": "You catch the goblin.",
+    "loseCondition": "The goblin escapes."
+  },
+  {
+    "id": "pinata-smash",
+    "name": "Pinata Smash",
+    "category": "rewards",
+    "tagline": "Nearly even odds, 2.1x reward.",
+    "description": "Take a swing at the pinata. A burst returns 2.1x; a miss returns nothing.",
+    "icon": "🪅",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "burst", "name": "Pinata Burst", "weight": 45, "rewardMultiplier": 2.1 },
+        { "id": "miss", "name": "Failed Swing", "weight": 55, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "45% of swings burst the pinata, paying 2.1x your wager.",
+      "The remaining 55% of swings fail and return nothing.",
+      "Swing results are drawn independently every round."
+    ],
+    "winCondition": "Your swing bursts the pinata.",
+    "loseCondition": "Your swing fails to burst the pinata."
+  },
+  {
+    "id": "lucky-dip",
+    "name": "Lucky Dip",
+    "category": "rewards",
+    "tagline": "One in five, quadruple back.",
+    "description": "Reach into the dip and pull out a prize token. One token in five pays 4.75x.",
+    "icon": "🥠",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "prize", "name": "Prize Token", "weight": 20, "rewardMultiplier": 4.75 },
+        { "id": "blank", "name": "Blank Token", "weight": 80, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "One token in five is a prize token paying 4.75x your wager.",
+      "Tokens are drawn blind and are equally likely on every attempt.",
+      "A blank token returns nothing."
+    ],
+    "winCondition": "You draw a prize token.",
+    "loseCondition": "You draw a blank token."
+  },
+  {
+    "id": "up-or-down",
+    "name": "Up or Down",
+    "category": "prediction",
+    "tagline": "Predict the next move.",
+    "description": "Predict whether the next tick rises or falls. A correct call pays 2.00x at a 49% hit rate.",
+    "icon": "📈",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "correct", "name": "Correct Call", "weight": 49, "rewardMultiplier": 2.0 },
+        { "id": "wrong", "name": "Wrong Call", "weight": 51, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Call Up or Down before the next tick is revealed.",
+      "The tick direction resolves against a fixed 49% win threshold.",
+      "A correct call pays 2.00x; an incorrect call pays nothing."
+    ],
+    "winCondition": "The tick moves in the direction you called.",
+    "loseCondition": "The tick moves against your call."
+  },
+  {
+    "id": "over-under",
+    "name": "Over / Under",
+    "category": "prediction",
+    "tagline": "Will the total beat the line?",
+    "description": "Predict whether the generated total finishes over or under the line. 2.04x on a 48% hit.",
+    "icon": "➗",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "over", "name": "Over The Line", "weight": 48, "rewardMultiplier": 2.04 },
+        { "id": "under", "name": "Under The Line", "weight": 52, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Choose a side of the line before the total is generated.",
+      "48% of rounds finish over the line; 52% finish under it.",
+      "A correct side pays 2.04x your wager."
+    ],
+    "winCondition": "The generated total lands on the side you chose.",
+    "loseCondition": "The generated total lands on the opposite side."
+  },
+  {
+    "id": "bull-bear",
+    "name": "Bull or Bear",
+    "category": "prediction",
+    "tagline": "Call the market mood.",
+    "description": "Call Bull or Bear on the synthetic index. A correct side returns 2.08x at 47% odds.",
+    "icon": "🐂",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "correct", "name": "Correct Side", "weight": 47, "rewardMultiplier": 2.08 },
+        { "id": "wrong", "name": "Wrong Side", "weight": 53, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Declare the session as Bull (rising) or Bear (falling) before it resolves.",
+      "47% of sessions resolve in your favour when you back the published side.",
+      "A correct side pays 2.08x your wager."
+    ],
+    "winCondition": "The session resolves on the side you declared.",
+    "loseCondition": "The session resolves on the opposite side."
+  },
+  {
+    "id": "odd-even",
+    "name": "Odd or Even",
+    "category": "prediction",
+    "tagline": "Parity in one draw.",
+    "description": "Predict whether the drawn number is odd or even. 1.96x on a 49% hit rate.",
+    "icon": "🔢",
+    "minWager": 10,
+    "maxWager": 10000,
+    "ruleModel": {
+      "type": "weighted",
+      "outcomes": [
+        { "id": "correct", "name": "Correct Parity", "weight": 49, "rewardMultiplier": 1.96 },
+        { "id": "wrong", "name": "Wrong Parity", "weight": 51, "rewardMultiplier": 0 }
+      ]
+    },
+    "rulesText": [
+      "Call Odd or Even before the number is drawn.",
+      "The drawn parity matches your call on 49% of rounds.",
+      "A correct parity pays 1.96x your wager."
+    ],
+    "winCondition": "The drawn number has the parity you called.",
+    "loseCondition": "The drawn number has the opposite parity."
+  },
+  {
+    "id": "high-low-roll",
+    "name": "High / Low Roll",
+    "category": "prediction",
+    "tagline": "Where will the card land?",
+    "description": "Predict whether a single drawn card ranks 8 or higher, or 7 or lower. Payout is balanced per side.",
+    "icon": "🎴",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.98,
+    "ruleModel": {
+      "type": "deck",
+      "deckCount": 1,
+      "drawRules": { "deckCount": 1, "shuffleFrequency": "per-round", "dealerStandOn": 0, "tieRule": "push" }
+    },
+    "rulesText": [
+      "Predict whether one card drawn from a full deck ranks 8+ (High) or 7 or lower (Low).",
+      "High covers 7 of 13 ranks and pays 1.82x; Low covers 6 of 13 and pays 2.12x.",
+      "Both sides carry the same 0.98 expected return."
+    ],
+    "winCondition": "The drawn card lands on the side you predicted.",
+    "loseCondition": "The drawn card lands on the opposite side."
+  },
+  {
+    "id": "blackjack-21",
+    "name": "Arcade 21",
+    "category": "choice",
+    "tagline": "Hit, stand, beat the dealer.",
+    "description": "Classic 21 played from a freshly shuffled deck. Hit and stand against a dealer who stops on 17.",
+    "icon": "♠️",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.94,
+    "ruleModel": {
+      "type": "deck",
+      "deckCount": 1,
+      "drawRules": { "deckCount": 1, "shuffleFrequency": "per-round", "dealerStandOn": 17, "tieRule": "push" }
+    },
+    "rulesText": [
+      "You and the dealer each receive two cards from a deck shuffled every round.",
+      "You may hit as many times as you like; the dealer stands on all totals of 17 or more.",
+      "A natural 21 pays 2.5x, a normal win pays 2x, and equal totals push."
+    ],
+    "winCondition": "Your total beats the dealer's without exceeding 21.",
+    "loseCondition": "You bust, or the dealer finishes with the higher total.",
+    "tieCondition": "Equal totals push — your wager is returned in full."
+  },
+  {
+    "id": "pick-a-door",
+    "name": "Pick a Door",
+    "category": "choice",
+    "tagline": "Three doors, one prize.",
+    "description": "Choose one of three doors. The prize was placed behind one of them before you decided.",
+    "icon": "🚪",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.98,
+    "ruleModel": {
+      "type": "player-skill",
+      "decisionDescription": "Choose one of three doors; the prize position is fixed before the choice is made.",
+      "possibleDecisions": ["door-1", "door-2", "door-3"]
+    },
+    "rulesText": [
+      "The prize is placed behind one of three doors before you choose.",
+      "Each door is equally likely to hold the prize.",
+      "Opening the prize door pays 2.94x your wager."
+    ],
+    "winCondition": "You open the door hiding the prize.",
+    "loseCondition": "You open an empty door."
+  },
+  {
+    "id": "shell-game",
+    "name": "Shell Game",
+    "category": "choice",
+    "tagline": "Follow the ball.",
+    "description": "Track the ball under three cups and make your pick. A correct cup returns 2.94x.",
+    "icon": "🥤",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.98,
+    "ruleModel": {
+      "type": "player-skill",
+      "decisionDescription": "Choose one of three cups; the ball position is committed before the cups stop moving.",
+      "possibleDecisions": ["cup-1", "cup-2", "cup-3"]
+    },
+    "rulesText": [
+      "The ball is hidden under one of three cups and the cups are shuffled.",
+      "The ball position is committed before the shuffle animation plays.",
+      "Picking the correct cup pays 2.94x your wager."
+    ],
+    "winCondition": "You pick the cup covering the ball.",
+    "loseCondition": "You pick an empty cup."
+  },
+  {
+    "id": "red-or-green",
+    "name": "Red or Green",
+    "category": "choice",
+    "tagline": "Two buttons, one outcome.",
+    "description": "Press Red or Green. An even-money style call that returns 1.96x when correct.",
+    "icon": "🔘",
+    "minWager": 10,
+    "maxWager": 10000,
+    "expectedReturn": 0.98,
+    "ruleModel": {
+      "type": "player-skill",
+      "decisionDescription": "Press Red or Green; the result colour is committed before the press registers.",
+      "possibleDecisions": ["red", "green"]
+    },
+    "rulesText": [
+      "Press Red or Green before the result colour is revealed.",
+      "Both colours are equally likely on every round.",
+      "A matching press pays 1.96x your wager."
+    ],
+    "winCondition": "The revealed colour matches the button you pressed.",
+    "loseCondition": "The revealed colour is the other button."
+  }
+]
