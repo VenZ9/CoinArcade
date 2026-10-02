@@ -453,6 +453,7 @@
     "icon": "⚖️",
     "minWager": 10,
     "maxWager": 10000,
+    "expectedReturn": 0.98,
     "ruleModel": {
       "type": "deterministic",
       "formulaDescription": "reward = 2.00 x wager with probability 0.49, otherwise 0",
